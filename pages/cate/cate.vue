@@ -1,5 +1,9 @@
 <template>
 	<view>
+<!-- 		调用my-search自定义组件 -->
+	<!-- 	<my-search :bgcolor="'yellow'" :radius="3"></my-search> -->
+<!-- 	为自定义组件创建click自定义事件 -->
+		<my-search @click="gotosearch"></my-search>
 		 <view class="scroll-view-container">
 		      <!-- 左侧的滚动视图区域 -->
 		      <scroll-view class="left-scroll-view" scroll-y :style="{height: wh + 'px'}">
@@ -46,8 +50,8 @@
 		onLoad() {
 			//获取当前系统的信息
 			const sysInfo=uni.getSystemInfoSync()
-			//获取当前可用高度，去除了tabbar和导航栏
-			this.wh=sysInfo.windowHeight
+			//获取当前可用高度，去除了tabbar和导航栏减去50像素搜索区域
+			this.wh=sysInfo.windowHeight-50
 			
 			this.getCateList()
 		},
@@ -71,6 +75,12 @@
 			gotoGoodsList(item3){
 				uni.navigateTo({
 					url:'/subpkg/goods_list/goods_list?cid='+item3.cat_id
+				})
+			},
+			//跳转至搜索页面
+			gotosearch(){
+				uni.navigateTo({
+					url:'../../subpkg/search/search'
 				})
 			}
 		}
