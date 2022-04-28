@@ -50,7 +50,11 @@
                     "style" :                                                                                    
                 {
                     "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
+					//开启下拉刷新
+                    "enablePullDownRefresh": true,
+					//为 subPackages 分包中的 goods_list 页面配置上拉触底的距离150PX
+					"onReachBottomDistance":150,
+					"backgroundColor": "#F8F8F8"
                 }
                 
                 }

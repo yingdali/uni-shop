@@ -21,7 +21,8 @@
 				<!--    三级分类列表 -->
 					<view class="cate-lv3-list">
 						<view class="cate-lv3-item" v-for="(item3,i3) in item2.children" :key="i3" @click="gotoGoodsList(item3)">
-							<image :src="item3.cat_icon"></image>
+							<!-- <image :src="item3.cat_icon || defaultPic"></image> 因为有实际src但是请求不显示图片所以用默认-->
+							<image :src="defaultPic"></image>
 							<text>{{item3.cat_name}}</text>
 						</view>
 					</view>
@@ -44,7 +45,9 @@
 				//二级分类列表
 				cateLevel2:[],
 				//解决切换选项卡不回到顶部
-				scrollTop:0
+				scrollTop:0,
+				// 默认的空图片
+				defaultPic: 'https://img3.doubanio.com/f/movie/8dd0c794499fe925ae2ae89ee30cd225750457b4/pics/movie/celebrity-default-medium.png'
 			};
 		},
 		onLoad() {
